@@ -1,0 +1,269 @@
+/* Общие стили для всей страницы */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f7fa;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  background-image: url('./image/fon.png'); /* Основной фон */
+  background-size: cover; /* Фон будет растягиваться, чтобы покрыть весь экран */
+  background-position: center; /* Центрируем фон */
+  background-attachment: fixed; /* Фон будет фиксирован при прокрутке */
+  background-repeat: no-repeat; /* Фон не будет повторяться */
+  position: relative;
+  overflow: hidden; /* Убираем возможность прокрутки */
+}
+
+/* Добавление картинки в нижнюю часть экрана (footer) */
+body::after {
+  content: ''; /* Псевдоэлемент для вставки изображения */
+  position: absolute;
+  bottom: 0; /* Фиксируем внизу экрана */
+  left: 0;
+  width: 100%; /* Растягиваем на всю ширину экрана */
+  height: 5%; /* Уменьшаем высоту картинки футера */
+  background-image: url('./image/112.png'); 
+  background-size: 100% 100%; /* Растягиваем картинку по ширине и высоте */
+  background-repeat: no-repeat; /* Картинка не будет повторяться */
+  background-position: center; /* Центрируем картинку по вертикали */
+}
+
+/* Стили для контейнера логина */
+.App {
+  width: 100%;
+  max-width: 450px; /* Сужаем контейнер */
+  background-color: rgba(255, 255, 255, 0.9); /* Прозрачный фон для контента */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  border-radius: 10px;
+  text-align: center;
+  margin: 0 10px;
+}
+
+/* Стили для заголовка */
+h1 {
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Стили для полей ввода (логин и пароль) */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+input {
+  padding: 12px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  width: 100%;
+  transition: border-color 0.3s ease;
+}
+
+input:focus {
+  border-color: #4caf50;
+}
+
+/* Стили для кнопки "Войти" */
+button {
+  padding: 14px 20px;
+  font-size: 18px;
+  color: #fff;
+  background-color: #2196f3;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+button:hover {
+  background-color: #f44336; /* Красный цвет при наведении */
+}
+
+button:active {
+  background-color: #d32f2f; /* Темно-красный цвет при нажатии */
+}
+
+/* Стили для страницы меню */
+.home-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+/* Добавляем стиль для "Справочник сотрудников МЧС КР" */
+.home-page h1 {
+  font-size: 32px;
+  color: #333;
+  margin-bottom: 40px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Стили для кнопок на странице меню */
+.menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu button {
+  padding: 18px 30px;
+  font-size: 20px;
+  color: #fff;
+  background-color: #2196f3;
+  border: none;
+  border-radius: 8px;
+  margin: 15px 0;
+  cursor: pointer;
+  width: 250px; /* Устанавливаем фиксированную ширину кнопок */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.menu button:hover {
+  background-color: #f44336; /* Красный цвет при наведении */
+  transform: scale(1.05);
+}
+
+.menu button:active {
+  background-color: #d32f2f; /* Темно-красный цвет при нажатии */
+  transform: scale(0.98); /* Уменьшаем кнопку при нажатии */
+}
+
+
+/* Стили для страницы TerritorialPage */
+.territorial-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.territorial-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.territorial-buttons a {
+  text-decoration: none; /* Убираем подчеркивание */
+}
+.button-row {
+  display: flex;
+  justify-content: space-between; /* Распределение кнопок по доступному пространству */
+  margin-bottom: 20px; /* Интервал между рядами */
+  width: 500px; /* Фиксированная ширина для ряда кнопок */
+}
+
+.territorial-button {
+  padding: 18px 30px; /* Внутренние отступы для кнопок */
+  font-size: 18px; /* Размер шрифта для кнопок */
+  color: #fff;
+  background-color: #2196f3;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 230px; /* Устанавливаем фиксированную ширину кнопок */
+  height: 70px; /* Устанавливаем фиксированную высоту кнопок */
+  margin: 0 10px; /* Отступы между кнопками */
+  text-align: center; /* Центрирование текста в кнопке */
+  display: flex;
+  align-items: center; /* Центрируем текст вертикально */
+  justify-content: center; /* Центрируем текст горизонтально */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.territorial-button:hover {
+  background-color: #f44336; /* Красный цвет при наведении */
+  transform: scale(1.05);
+}
+
+.territorial-button:active {
+  background-color: #d32f2f; /* Темно-красный цвет при нажатии */
+  transform: scale(0.98); /* Уменьшаем кнопку при нажатии */
+}
+
+
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+td {
+  word-wrap: break-word;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+  .App {
+    max-width: 350px;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .menu button {
+    font-size: 18px;
+    width: 200px;
+  }
+
+  .login-form input,
+  .login-form button {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+/* Фиксация размера картинки футера на больших экранах */
+@media (min-width: 1200px) {
+  body::after {
+    height: 10%; /* Картинка будет меньше по высоте на больших экранах */
+  }
+}
+
+@media (max-width: 600px) {
+  body::after {
+    height: 10%; /* Картинка будет больше по высоте на маленьких экранах */
+  }
+}
+
+
