@@ -108,7 +108,6 @@ function SearchPage() {
               <th>Звание</th>
               <th>Должность</th>
               <th>Номер телефона</th>
-              <th>Отдел</th>
             </tr>
           </thead>
           <tbody>

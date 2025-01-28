@@ -170,6 +170,7 @@ td {
   padding: 20px 0;
 }
 
+
 @media (max-width: 768px) {
   .menu button, .territorial-button, .subordinate-button {
     width: 160px; 
@@ -216,9 +217,9 @@ td {
     white-space: normal;
   }
 
-  .territorial-menu h1, .subordinate-menu h2 {
-    font-size: 20px;
-    margin-top: 10%; 
+  .territorial-menu h2, .subordinate-menu h2 {
+    font-size: 15px;
+    margin-top: 20%; 
   }
 
   .back-button {
@@ -236,9 +237,9 @@ td {
     overflow-x: auto;
   }
 
-  .territorial-menu h1, .subordinate-menu h1 {
-    font-size: 18px;
-    margin-top: 10%; 
+  .territorial-menu h2, .subordinate-menu h2 {
+    font-size: 15px;
+    margin-top: 20%; 
   }
 
   .back-button {
@@ -359,3 +360,16 @@ td {
     padding: 4px; 
   }
 }
+
+.login-form {
+  margin-left: -50%; 
+  padding-left: 50%;  
+  margin-right: 150px;
+}
+
+.login-form button{
+  width: 200px;
+  margin-left: 10%;
+  margin-top: 10px;
+}
+
