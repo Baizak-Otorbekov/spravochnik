@@ -1,10 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; 
 import './App.css';
 
 function SubordinatePage() {
+  const navigate = useNavigate(); 
+
+  const handleBack = () => {
+    navigate('/home'); 
+  };
+
   return (
-    <div className="subordinate-menu">
+    <div className="subordinate-menu central-office-container"> 
       <h2>Подведомственные подразделения</h2>
 
       <div className="subordinate-buttons">
@@ -63,8 +69,6 @@ function SubordinatePage() {
             <button className="subordinate-button">УИЦ</button>
           </Link>
         </div>
-
-        {/* Шестая строка из трех кнопок */}
         <div className="button-row">
           <Link to="/subordinate/bishkek-city">
             <button className="subordinate-button">Бишкек-Сити</button>
@@ -99,8 +103,12 @@ function SubordinatePage() {
           </Link>
         </div>
       </div>
+      <div className="back-button-container">
+        <button className="back-button" onClick={handleBack}>
+          Назад
+        </button>
+      </div>
     </div>
   );
 }
-
 export default SubordinatePage;

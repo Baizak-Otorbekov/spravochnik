@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import Table from '../Table';
-import '../App.css'; 
+import { useNavigate } from 'react-router-dom'; 
+import Table from '../Table'; 
+import '../App.css';
 
 function GidrometPage() {
   const [isAdmin, setIsAdmin] = useState(false);
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     const role = localStorage.getItem('role');
@@ -12,10 +14,19 @@ function GidrometPage() {
     }
   }, []);
 
+  const handleBack = () => {
+    navigate('/subordinate'); 
+  };
+
   return (
     <div className="territorial-page">
       <h2>Гидромет</h2>
       <Table departmentKey="gidromed" isAdmin={isAdmin} />
+      <div className="back-button-container">
+        <button className="back-button" onClick={handleBack}>
+          Назад
+        </button>
+      </div>
     </div>
   );
 }

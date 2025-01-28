@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './App.css'; // Подключаем CSS файл
 
 const Table = ({ isAdmin, departmentKey }) => {
   const [data, setData] = useState([]); 
@@ -80,104 +81,102 @@ const Table = ({ isAdmin, departmentKey }) => {
   const rowsToDisplay = searchQuery ? searchResults : data;
 
   return (
-    <div>
+    <div className="table-container">
       <h2>Таблица сотрудников</h2>
 
-      <div style={{ marginBottom: '10px' }}>
-        <table>
-          <thead>
-            <tr>
-              <th>№</th>
-              <th>ФИО</th>
-              <th>Звание</th>
-              <th>Должность</th>
-              <th>Номер телефона</th>
-              {isAdmin && <th>Действия</th>} 
-            </tr>
-          </thead>
-          <tbody>
-            {rowsToDisplay.length === 0 ? (
-              <tr><td colSpan="6">Нет данных</td></tr>
-            ) : (
-              rowsToDisplay.map((row, index) => (
-                <tr key={row.id}>
-                  <td>{index + 1}</td>
-                  <td>{row.name}</td>
-                  <td>{row.rank}</td>
-                  <td>{row.position}</td>
+      <table>
+        <thead>
+          <tr>
+            <th>№</th>
+            <th>ФИО</th>
+            <th>Звание</th>
+            <th>Должность</th>
+            <th>Номер телефона</th>
+            {isAdmin && <th>Действия</th>} 
+          </tr>
+        </thead>
+        <tbody>
+          {rowsToDisplay.length === 0 ? (
+            <tr><td colSpan="6">Нет данных</td></tr>
+          ) : (
+            rowsToDisplay.map((row, index) => (
+              <tr key={row.id}>
+                <td>{index + 1}</td>
+                <td>{row.name}</td>
+                <td>{row.rank}</td>
+                <td>{row.position}</td>
+                <td>
+                  <a href={`tel:${row.phone}`}>{row.phone}</a>
+                </td>
+                {isAdmin && (
                   <td>
-                    <a href={`tel:${row.phone}`}>{row.phone}</a>
+                    <button onClick={() => handleEdit(row.id)}>Изменить</button>
+                    <button onClick={() => handleDelete(row.id)}>Удалить</button>
                   </td>
-                  {isAdmin && (
-                    <td>
-                      <button onClick={() => handleEdit(row.id)}>Изменить</button>
-                      <button onClick={() => handleDelete(row.id)}>Удалить</button>
-                    </td>
-                  )}
-                </tr>
-              ))
-            )}
-            {isAdding && (
-              <tr>
-                <td>{data.length + 1}</td>
-                <td>
-                  <input
-                    type="text"
-                    name="name"
-                    value={newRow.name}
-                    onChange={handleChange}
-                    placeholder="ФИО"
-                  />
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    name="rank"
-                    value={newRow.rank}
-                    onChange={handleChange}
-                    placeholder="Звание"
-                  />
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    name="position"
-                    value={newRow.position}
-                    onChange={handleChange}
-                    placeholder="Должность"
-                  />
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    name="phone"
-                    value={newRow.phone}
-                    onChange={handleChange}
-                    placeholder="Номер телефона"
-                  />
-                </td>
-                <td>
-                  <button onClick={handleSaveRow}>Сохранить</button>
-                </td>
+                )}
               </tr>
-            )}
-          </tbody>
-        </table>
-      </div>
+            ))
+          )}
+          {isAdding && (
+            <tr>
+              <td>{data.length + 1}</td>
+              <td>
+                <input
+                  type="text"
+                  name="name"
+                  value={newRow.name}
+                  onChange={handleChange}
+                  placeholder="ФИО"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  name="rank"
+                  value={newRow.rank}
+                  onChange={handleChange}
+                  placeholder="Звание"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  name="position"
+                  value={newRow.position}
+                  onChange={handleChange}
+                  placeholder="Должность"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  name="phone"
+                  value={newRow.phone}
+                  onChange={handleChange}
+                  placeholder="Номер телефона"
+                />
+              </td>
+              <td>
+                <button onClick={handleSaveRow}>Сохранить</button>
+              </td>
+            </tr>
+          )}
+        </tbody>
+      </table>
+
       {isAdmin && !isAdding && (
-        <div>
-          <button onClick={handleAddRow} style={{ marginBottom: '10px' }}>Добавить сотрудника</button>
-        </div>
+        <button onClick={handleAddRow} className="add-row-button">Добавить сотрудника</button>
       )}
-      <div style={{ display: 'flex', alignItems: 'center', marginTop: '10px' }}>
+
+      <div className="search-container">
         <input
           type="text"
           value={searchQuery}
           onChange={handleSearch}
           placeholder="Поиск по ФИО, званию, должности или телефону"
-          style={{ padding: '5px', width: '250px', marginRight: '10px' }}
+          className="search-input"
         />
-        <button onClick={() => setSearchQuery('')} style={{ padding: '5px' }}>Отмена</button>
+        <button onClick={() => setSearchQuery('')} className="cancel-search">Отмена</button>
       </div>
     </div>
   );

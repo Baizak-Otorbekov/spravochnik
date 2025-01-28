@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; 
 import Table from '../Table'; 
 import '../App.css'; 
 
 function UicPage() {
   const [isAdmin, setIsAdmin] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const role = localStorage.getItem('role');
@@ -12,10 +14,20 @@ function UicPage() {
     }
   }, []);
 
+  const handleBack = () => {
+    navigate('/subordinate'); 
+  };
+
   return (
     <div className="territorial-page">
       <h2>УИЦ</h2>
       <Table departmentKey="uic" isAdmin={isAdmin} />
+
+      <div className="back-button-container">
+        <button className="back-button" onClick={handleBack}>
+          Назад
+        </button>
+      </div>
     </div>
   );
 }

@@ -1,19 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react'; 
+import { Link, useNavigate } from 'react-router-dom';
 import './App.css';
 
 function TerritorialPage() {
-  const [isAdmin, setIsAdmin] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const role = localStorage.getItem('role');
     if (role === 'admin') {
-      setIsAdmin(true);
     }
   }, []);
 
+  const handleBack = () => {
+    navigate('/home');
+  };
+
   return (
-    <div className="territorial-menu">
+    <div className="territorial-menu central-office-container">
       <h2>Территориальные подразделения</h2>
 
       <div className="territorial-buttons">
@@ -50,7 +53,7 @@ function TerritorialPage() {
           </Link>
         </div>
         <div className="button-row">
-        <Link to="/territorial/umchs-osh-obl">
+          <Link to="/territorial/umchs-osh-obl">
             <button className="territorial-button">УМЧС Ошская обл</button>
           </Link>
           <Link to="/territorial/gcps">
@@ -58,13 +61,19 @@ function TerritorialPage() {
           </Link>
         </div>
         <div className="button-row">
-        <Link to="/territorial/roso">
+          <Link to="/territorial/roso">
             <button className="territorial-button">РОСО</button>
           </Link>
           <Link to="/territorial/gss">
             <button className="territorial-button">ГСС</button>
           </Link>
         </div>
+      </div>
+
+      <div className="back-button-container">
+        <button className="back-button" onClick={handleBack}>
+          Назад
+        </button>
       </div>
     </div>
   );

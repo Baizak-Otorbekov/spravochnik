@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; 
 import './App.css';
 
 function SearchPage() {
   const [searchQuery, setSearchQuery] = useState(''); 
   const [searchResults, setSearchResults] = useState([]); 
+
+  const navigate = useNavigate(); 
 
   const departments = [
     'gss',
@@ -72,6 +75,10 @@ function SearchPage() {
     setSearchResults(filtered); 
   };
 
+  const handleBack = () => {
+    navigate('/home'); 
+  };
+
   return (
     <div>
       <h1>Поиск</h1>
@@ -84,6 +91,12 @@ function SearchPage() {
           placeholder="Поиск по ФИО, званию, должности или телефону"
           style={{ padding: '5px', width: '300px' }}
         />
+      </div>
+
+      <div className="back-button-container">
+        <button className="back-button" onClick={handleBack}>
+          Назад
+        </button>
       </div>
 
       {searchResults.length > 0 ? (
@@ -121,5 +134,4 @@ function SearchPage() {
     </div>
   );
 }
-
 export default SearchPage;

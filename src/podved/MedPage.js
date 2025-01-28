@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; 
 import Table from '../Table'; 
 import '../App.css'; 
 
 function MedPage() {
   const [isAdmin, setIsAdmin] = useState(false);
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     const role = localStorage.getItem('role');
@@ -12,10 +14,20 @@ function MedPage() {
     }
   }, []);
 
+  const handleBack = () => {
+    navigate('/subordinate'); 
+  };
+
   return (
     <div className="territorial-page">
       <h2>Медицинская служба</h2>
       <Table departmentKey="medicinskaya-sluzhba" isAdmin={isAdmin} />
+
+      <div className="back-button-container">
+        <button className="back-button" onClick={handleBack}>
+          Назад
+        </button>
+      </div>
     </div>
   );
 }
